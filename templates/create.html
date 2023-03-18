@@ -33,19 +33,17 @@
 
 <body class="text-white" style="background-color: rgba(25,25,25,1); font-family: serif;">
     <h1 class="text-white m-2">Create New User</h1>
+    <label for="name">Enter New User's Name (First and Last), Id, and Points</label>
     <form method="post">
         <div class="input-group">
-            <label for="name">Enter New User's Name (First and Last)</label>
-            <br>
             <input type="text" name="name" class="form-control" placeholder="Name">{{ request.form['name'] }}</input>
-            <br>
-            <label for="id">Enter New User's Id</label>
-            <input type="text" name="id" class="form-control" placeholder="Id">{{ request.form['id'] }}</input>
-            <br>
-            <label for="points">Enter New User's Points</label>
-            <input type="text" name="points" class="form-control" placeholder="Points">{{ request.form['points'] }}</input>
-            <br>
-            <input type="submit" class="btn" value="Create User" style="background-color: rgba(0,255,255,1);"/>
         </div>
+        <div class="input-group">
+            <input type="text" name="id" class="form-control" placeholder="Id">{{ request.form['id'] }}</input>
+        </div>
+        <div class="input-group">
+            <input type="text" name="points" class="form-control" placeholder="Points">{{ request.form['points'] }}</input>
+        </div>
+        <input type="submit" class="btn" value="Create User" style="background-color: rgba(0,255,255,1);"/>
     </form>
 </body>
