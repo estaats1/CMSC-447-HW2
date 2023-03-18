@@ -19,6 +19,9 @@
     <div class="container-fluid">
         <div class="nav justify-content-center">
             <div class="nav-item">
+                <a class="nav-link text-black" href="/">Home</a>
+            </div>
+            <div class="nav-item">
                 <a class="nav-link text-black active" href="search">Search</a>
             </div>
             <div class="nav-item">
@@ -29,19 +32,17 @@
 </nav>
 
 <body class="text-white" style="background-color: rgba(25,25,25,1); font-family: serif;">
-    <form class="input-group" method="post">
-        <br>
+    <h1 class="text-white m-2">Search Users</h1>
+    <form class="input-group m-2" method="post">
         <label for="search_bar">Enter Name to Search For</label>
         <br>
         <div class="form-outline">
-            <input type="search" id="search_bar" class="form-control" placeholder="Name"/>
+            <input type="search" name="search_bar" class="form-control" placeholder="Name"/>
         </div>
-        <button type="button" class="btn" style="background-color: rgba(0,255,255,1);">
-            <label class="fas fa-search">Search</label>
-        </button>
+        <button type="sumbit" class="btn" style="background-color: rgba(0,255,255,1);">Search</button>
     </form>
 
-    <table class="table table-bordered table-dark">
+    <table class="table table-bordered table-dark m-2">
         <thead>
             <tr>
                 <th scope="col">Name</th>

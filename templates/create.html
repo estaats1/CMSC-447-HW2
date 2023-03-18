@@ -19,6 +19,9 @@
     <div class="container-fluid">
         <div class="nav justify-content-center">
             <div class="nav-item">
+                <a class="nav-link text-black" href="/">Home</a>
+            </div>
+            <div class="nav-item">
                 <a class="nav-link text-black" href="search">Search</a>
             </div>
             <div class="nav-item">
@@ -32,29 +35,17 @@
     <h1 class="text-white m-2">Create New User</h1>
     <form method="post">
         <div class="input-group">
-            <br>
             <label for="name">Enter New User's Name (First and Last)</label>
             <br>
-            <br>
-            <div class="form-outline">
-                <input type="text" name="name" class="form-control" placeholder="Name">{{ request.form['name'] }}</input>
-            </div>
+            <input type="text" name="name" class="form-control" placeholder="Name">{{ request.form['name'] }}</input>
             <br>
             <label for="id">Enter New User's Id</label>
-            <br>
-            <div class="form-outline">
-                <input type="text" name="id" class="form-control" placeholder="Id">{{ request.form['id'] }}</input>
-            </div>
+            <input type="text" name="id" class="form-control" placeholder="Id">{{ request.form['id'] }}</input>
             <br>
             <label for="points">Enter New User's Points</label>
+            <input type="text" name="points" class="form-control" placeholder="Points">{{ request.form['points'] }}</input>
             <br>
-            <div class="form-outline">
-                <input type="text" name="points" class="form-control" placeholder="Points">{{ request.form['points'] }}</input>
-            </div>
-            <br>
-            <button type="submit" style="background-color: rgba(0,255,255,1);">
-                <label>Create User</label>
-            </button>
+            <input type="submit" class="btn" value="Create User" style="background-color: rgba(0,255,255,1);"/>
         </div>
     </form>
 </body>

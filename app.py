@@ -16,7 +16,7 @@ def home():
     cur = sql.cursor()
     cur.execute("SELECT * FROM users;")
     all_users = cur.fetchall()
-    return render_template('/search.html', users=all_users)
+    return render_template('/home.html', users=all_users)
 
 @app.route('/search', methods=('GET', 'POST'))
 def search():
@@ -24,9 +24,11 @@ def search():
         user = request.form['search-bar']
         sql = sqlite3.connect("database.db")
         cur = sql.cursor()
-        cur.execute("SELECT * FROM users WHERE name LIKE %s;", user)
-        users = cur.fetchall()
-        return render_template('search.html', users=users)
+        cur.execute("SELECT * FROM users WHERE name LIKE ?;", ("%"+user+"%"))
+        sql.commit()
+        sql.close()
+        search_users = cur.fetchall()
+        return render_template('/search.html', users=search_users)
     return render_template('/search.html')
 
 @app.route('/create', methods=('GET', 'POST'))
@@ -40,5 +42,14 @@ def create():
         cur.execute("INSERT INTO users (name, id, points) VALUES (?, ?, ?);", (name, id, points))
         sql.commit()
         sql.close()
-        return redirect(url_for('search'))
+        return redirect('http://127.0.0.1:5000')
     return render_template('/create.html')
+
+@app.route('/delete/<id>', methods=('POST',))
+def delete(id):
+    sql = sqlite3.connect("database.db")
+    cur = sql.cursor()
+    cur.execute("DELETE FROM users WHERE id=?;", (id,))
+    sql.commit()
+    sql.close()
+    return redirect('http://127.0.0.1:5000')
