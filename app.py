@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect
 import sqlite3
 
 app = Flask(__name__)
@@ -21,13 +21,13 @@ def home():
 @app.route('/search', methods=('GET', 'POST'))
 def search():
     if request.method == 'POST':
-        user = request.form['search-bar']
+        user = request.form['search_user']
         sql = sqlite3.connect("database.db")
         cur = sql.cursor()
-        cur.execute("SELECT * FROM users WHERE name LIKE ?;", ("%"+user+"%"))
+        cur.execute("SELECT * FROM users WHERE name LIKE ?;", ["%"+user+"%"])
+        search_users = cur.fetchall()
         sql.commit()
         sql.close()
-        search_users = cur.fetchall()
         return render_template('/search.html', users=search_users)
     return render_template('/search.html')
 
